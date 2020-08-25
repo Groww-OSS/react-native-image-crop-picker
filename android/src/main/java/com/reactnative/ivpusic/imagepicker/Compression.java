@@ -31,6 +31,7 @@ class Compression {
     File resize(String originalImagePath, int maxWidth, int maxHeight, int quality, ReactApplicationContext reactApplicationContext) throws IOException {
     	File resizeImageFile = null;
     	try {
+            Toast.makeText(reactApplicationContext,"COMPRESSION HAS STARTED",Toast.LENGTH_LONG);
 		    Bitmap original = BitmapFactory.decodeFile(originalImagePath);
 		    int width = original.getWidth();
 		    int height = original.getHeight();
