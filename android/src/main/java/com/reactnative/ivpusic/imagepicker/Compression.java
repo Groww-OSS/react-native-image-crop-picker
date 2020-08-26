@@ -7,10 +7,8 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.facebook.react.bridge.Promise;
-import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableMap;
 
 import java.io.BufferedOutputStream;
@@ -31,7 +29,7 @@ class Compression {
 	private BitmapFactory.Options options = new BitmapFactory.Options();
 	private ResultCollector resultCollector = new ResultCollector();
 
-	File resize(String originalImagePath, int maxWidth, int maxHeight, int quality, ReactApplicationContext reactApplicationContext) throws IOException {
+	File resize(String originalImagePath, int maxWidth, int maxHeight, int quality) throws IOException {
 		File resizeImageFile = null;
 		/*
 			In the first attempt try without creating bitmap
@@ -166,7 +164,7 @@ class Compression {
 		}
 	}
 
-	File compressImage(final ReadableMap options, final String originalImagePath, final BitmapFactory.Options bitmapOptions, final ReactApplicationContext reactContext) throws IOException {
+	File compressImage(final ReadableMap options, final String originalImagePath, final BitmapFactory.Options bitmapOptions) throws IOException {
 		Integer maxWidth = options.hasKey("compressImageMaxWidth") ? options.getInt("compressImageMaxWidth") : null;
 		Integer maxHeight = options.hasKey("compressImageMaxHeight") ? options.getInt("compressImageMaxHeight") : null;
 		Double quality = options.hasKey("compressImageQuality") ? options.getDouble("compressImageQuality") : null;
@@ -201,7 +199,7 @@ class Compression {
 			maxHeight = Math.min(maxHeight, bitmapOptions.outHeight);
 		}
 
-		return resize(originalImagePath, maxWidth, maxHeight, targetQuality, reactContext);
+		return resize(originalImagePath, maxWidth, maxHeight, targetQuality);
 	}
 
 	synchronized void compressVideo(final Activity activity, final ReadableMap options, final String originalVideo, final String compressedVideo, final Promise promise) {
