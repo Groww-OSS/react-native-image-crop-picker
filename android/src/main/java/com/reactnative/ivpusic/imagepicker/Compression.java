@@ -122,9 +122,9 @@ class Compression {
 		bytesTotal = bytesTotal / BYTES_IN_MB;
 		float mbUsed = bytesUsed / BYTES_IN_MB;
 		float freeMemoryInMB = bytesTotal - mbUsed;
-		Log.d(TAG, "bytesTotal:" + bytesTotal);
-		Log.d(TAG, "mbUsed:" + mbUsed);
-		Log.d(TAG, "freeMb:" + freeMemoryInMB);
+		// Log.d(TAG, "bytesTotal:" + bytesTotal);
+		// Log.d(TAG, "mbUsed:" + mbUsed);
+		// Log.d(TAG, "freeMb:" + freeMemoryInMB);
 		return freeMemoryInMB;
 	}
 
