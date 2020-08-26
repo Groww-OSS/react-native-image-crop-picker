@@ -49,25 +49,25 @@ class Compression {
 		int width = options.outWidth;
 		int height = options.outHeight;
 		float requiredMemory = (width * height * 4.0f) / BYTES_IN_MB;
-		Log.d(TAG, "first bitmap size required:" + requiredMemory + " MB");
+		// Log.d(TAG, "first bitmap size required:" + requiredMemory + " MB");
 		float availableMemory = availMemory();
-		Log.d(TAG, "available memory" + availableMemory);
+		// Log.d(TAG, "available memory" + availableMemory);
 
-		Log.d(TAG, "max_width:" + maxWidth);
-		Log.d(TAG, "max_height:" + maxHeight);
-		Log.d(TAG, "width" + width);
-		Log.d(TAG, "height" + height);
+		// Log.d(TAG, "max_width:" + maxWidth);
+		// Log.d(TAG, "max_height:" + maxHeight);
+		// Log.d(TAG, "width" + width);
+		// Log.d(TAG, "height" + height);
 		// after we get meta data of bitmap we again set it to false
 		// so that we can further create a bitmap image in memory,
 		// based on the available memory or after sampling it.
 		options.inJustDecodeBounds = false;
 		if (requiredMemory < availableMemory) {
-			Log.d(TAG, "Hit this condition");
+			// Log.d(TAG, "Hit this condition");
 			original = BitmapFactory.decodeFile(originalImagePath, options);
 		} else {
-			Log.d(TAG,"Hit sampling condition");
-			Log.d(TAG, "AFTER SAMPLEING" + options.outWidth + " " + options.inSampleSize + " " + options.outHeight);
-			Log.d(TAG, "SAMPLE FACTOR" + calculateInSampleSize(maxWidth, maxHeight));
+			// Log.d(TAG,"Hit sampling condition");
+			// Log.d(TAG, "AFTER SAMPLEING" + options.outWidth + " " + options.inSampleSize + " " + options.outHeight);
+			// Log.d(TAG, "SAMPLE FACTOR" + calculateInSampleSize(maxWidth, maxHeight));
 			options.inSampleSize = calculateInSampleSize(maxWidth, maxHeight);
 			original = BitmapFactory.decodeFile(originalImagePath, options);
 		}
