@@ -44,19 +44,14 @@ class Compression {
 		// this will create bitmap in memory right away,we don't want that
 		// Bitmap original = BitmapFactory.decodeFile(originalImagePath);
 		BitmapFactory.decodeFile(originalImagePath, options);
-		options.outWidth = options.outWidth * 100;
-		options.outHeight = options.outHeight * 100;
+		// just for testing sampling increasing bitmap width and height
+		// with 100 times
+		// options.outWidth = options.outWidth * 100;
+		// options.outHeight = options.outHeight * 100;
 		int width = options.outWidth;
 		int height = options.outHeight;
 		float requiredMemory = (width * height * 4.0f) / BYTES_IN_MB;
-		// Log.d(TAG, "first bitmap size required:" + requiredMemory + " MB");
 		float availableMemory = availMemory();
-		// Log.d(TAG, "available memory" + availableMemory);
-
-		// Log.d(TAG, "max_width:" + maxWidth);
-		// Log.d(TAG, "max_height:" + maxHeight);
-		// Log.d(TAG, "width" + width);
-		// Log.d(TAG, "height" + height);
 		// after we get meta data of bitmap we again set it to false
 		// so that we can further create a bitmap image in memory,
 		// based on the available memory or after sampling it.
@@ -122,9 +117,6 @@ class Compression {
 		bytesTotal = bytesTotal / BYTES_IN_MB;
 		float mbUsed = bytesUsed / BYTES_IN_MB;
 		float freeMemoryInMB = bytesTotal - mbUsed;
-		// Log.d(TAG, "bytesTotal:" + bytesTotal);
-		// Log.d(TAG, "mbUsed:" + mbUsed);
-		// Log.d(TAG, "freeMb:" + freeMemoryInMB);
 		return freeMemoryInMB;
 	}
 
