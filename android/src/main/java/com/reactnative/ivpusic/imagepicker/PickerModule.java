@@ -776,8 +776,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
     }
 
     private boolean isCameraAvailable(Activity activity) {
-        return activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)
-                || activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
+        return activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
     private File createImageFile() throws IOException {
